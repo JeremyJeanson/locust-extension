@@ -1,0 +1,90 @@
+{
+	"name": "locust-extension",
+	"displayName": "Locust Extension",
+	"description": "Visual Studio Code extension to simplify the usage of locust.io",
+	"version": "0.0.2",
+	"icon": "images/icon.png",
+	"publisher": "jeremyjeanson",
+	"repository": "https://github.com/JeremyJeanson/locust-extension",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.53.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:locust-extension.install",
+		"onCommand:locust-extension.uninstall",
+		"onCommand:locust-extension.upgrade",
+		"onCommand:locust-extension.run"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "locust-extension.install",
+				"category": "Locust",
+				"title": "Install"
+			},
+			{
+				"command": "locust-extension.uninstall",
+				"category": "Locust",
+				"title": "Uninstall"
+			},
+			{
+				"command": "locust-extension.upgrade",
+				"category": "Locust",
+				"title": "Upgrade"
+			},
+			{
+				"command": "locust-extension.run",
+				"category": "Locust",
+				"title": "Run load test with Locust",
+				"icon": {
+					"dark": "images/dark/locust.svg",
+					"light": "images/light/locust.svg"
+				}
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "locust-extension.run",
+					"when": "editorLangId == python || editorLangId == properties"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "locust-extension.run",
+					"when": "editorLangId == python || editorLangId == properties",
+					"group": "navigation"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "webpack --mode production",
+		"compile": "webpack --mode development",
+		"lint": "eslint src --ext ts",
+		"watch": "webpack --mode development --watch",
+		"pretest": "npm run compile && npm run lint",
+		"pack": "vsce package",
+		"publish": "vsce publish"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.2.1",
+		"@types/node": "^14.14.31",
+		"@types/vscode": "^1.53.0",
+		"@typescript-eslint/eslint-plugin": "^4.15.2",
+		"@typescript-eslint/parser": "^4.15.2",
+		"eslint": "^7.20.0",
+		"glob": "^7.1.6",
+		"ts-loader": "^8.0.17",
+		"typescript": "^4.2.2",
+		"vsce": "1.85.0",
+		"webpack": "^5.24.1",
+		"webpack-cli": "^4.5.0"
+	}
+}
