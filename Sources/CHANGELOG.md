@@ -1,5 +1,8 @@
 # Locust Extension Change Log
 
+## Version 0.0.3 - 2021-12-09 
+- Upgrade dependencies.
+
 ## Version 0.0.2 - 2021-02-23 
 - Update the documentation.
 
